@@ -15,7 +15,7 @@
 		<![endif]-->
 	</head>
 	<body ng-controller="calculatorCtrl" class="container">
-		<h1 class="text-center">輸血計算機 Blood Transfusion Calculator</h1>
+		<h1 class="page-header">Blood Transfusion Calculator</h1>
 		<form name="outerForm" class="tab-form-demo">
 			<uib-tabset active="activeForm">
 			<uib-tab index="0" heading="For Dog">
@@ -23,50 +23,93 @@
 				<h3>Transfusion Volume</h2>
 				<ng-form name="nestedForm"  class="row">
 				<div class="form-group">
-					<label>recipient weight</label>
-					<input type="text" class="form-control" required ng-model="dog.weight" />
+					<label>Recipient weight (kg)</label>
+					<input type="number" class="form-control" required ng-model="dog.weight" />
 				</div>
 				<div class="form-group">
-					<label>recipient PCV</label>
-					<input type="text" class="form-control" required ng-model="dog.recipientPCV" />
+					<label>Recipient PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="dog.recipientPCV" />
 				</div>
 				<div class="form-group">
-					<label>donor PCV</label>
-					<input type="text" class="form-control" required ng-model="dog.donorPCV" />
+					<label>Donor PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="dog.donorPCV" />
 				</div>
 				<div class="form-group">
-					<label>desired PCV</label>
-					<input type="text" class="form-control" required ng-model="dog.desiredPCV" />
+					<label>Desired PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="dog.desiredPCV" />
 				</div>
-				<h3>Volume = {{getDogTransfusionVolume(dog)}} ml</h3>
+				<h3>Volume = {{getTransfusionVolume(dog) | number:0}} ml</h3>
 				</ng-form>
 			</div>	
 			<div class="col-lg-6">
-				<h3>Transfusion Volume</h2>
+				<h3>Expected PCV</h2>
 				<ng-form name="nestedForm"  class="row">
 				<div class="form-group">
-					<label>recipient weight</label>
-					<input type="text" class="form-control" required ng-model="model.name" />
+					<label>Recipient weight (kg)</label>
+					<input type="number" class="form-control" required ng-model="dog.weight" />
 				</div>
 				<div class="form-group">
-					<label>recipient PCV</label>
-					<input type="text" class="form-control" required ng-model="model.name" />
+					<label>Recipient PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="dog.recipientPCV" />
 				</div>
 				<div class="form-group">
-					<label>donor PCV</label>
-					<input type="text" class="form-control" required ng-model="model.name" />
+					<label>Donor PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="dog.donorPCV" />
 				</div>
 				<div class="form-group">
-					<label>desired PCV</label>
-					<input type="text" class="form-control" required ng-model="model.name" />
+					<label>Transfusion volume (ml)</label>
+					<input type="number" class="form-control" required ng-model="dog.transfusionVolume" />
 				</div>
-				<button type="submit" class="btn btn-default">Calculate</button>
+				<h3>PCV = {{getPCV(dog) | number:0}} %</h3>
 				</ng-form>
-			</div>			
+			</div>		
 			</uib-tab>
 
 			<uib-tab index="1" heading="For Cat">
-				
+				<div class="col-lg-6">
+				<h3>Transfusion Volume</h2>
+				<ng-form name="nestedForm"  class="row">
+				<div class="form-group">
+					<label>Recipient weight (kg)</label>
+					<input type="number" class="form-control" required ng-model="cat.weight" />
+				</div>
+				<div class="form-group">
+					<label>Recipient PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="cat.recipientPCV" />
+				</div>
+				<div class="form-group">
+					<label>Donor PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="cat.donorPCV" />
+				</div>
+				<div class="form-group">
+					<label>Desired PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="cat.desiredPCV" />
+				</div>
+				<h3>Volume = {{getTransfusionVolume(cat) | number:0}} ml</h3>
+				</ng-form>
+			</div>	
+			<div class="col-lg-6">
+				<h3>Expected PCV</h2>
+				<ng-form name="nestedForm"  class="row">
+				<div class="form-group">
+					<label>Recipient weight (kg)</label>
+					<input type="number" class="form-control" required ng-model="cat.weight" />
+				</div>
+				<div class="form-group">
+					<label>Recipient PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="cat.recipientPCV" />
+				</div>
+				<div class="form-group">
+					<label>Donor PCV (%)</label>
+					<input type="number" class="form-control" required ng-model="cat.donorPCV" />
+				</div>
+				<div class="form-group">
+					<label>Transfusion volume (ml)</label>
+					<input type="number" class="form-control" required ng-model="cat.transfusionVolume" />
+				</div>
+				<h3>PCV = {{getPCV(cat) | number:0}} %</h3>
+				</ng-form>
+			</div>	
 			</uib-tab>
 			</uib-tabset>
 		</form>
