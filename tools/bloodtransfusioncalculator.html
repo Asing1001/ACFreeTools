@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="" ng-app="acToolsApp">
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Title Page</title>
-
+		<title>輸血計算機 Blood Transfusion Calculator</title>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-
 		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
-			<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-			<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 	</head>
-	<body>
-		<h1 class="text-center">Blood Transfusion Calculator</h1>	
-		
-		<!-- jQuery -->
-		<script src="//code.jquery.com/jquery.js"></script>
-		<!-- Bootstrap JavaScript -->
+	<body ng-controller="calculatorCtrl" class="container">
+		<h1 class="text-center">輸血計算機 Blood Transfusion Calculator</h1>
+		<form name="outerForm" class="tab-form-demo">
+			<uib-tabset active="activeForm">
+			<uib-tab index="0" heading="For Dog">
+			<div class="col-lg-6">
+				<h3>Transfusion Volume</h2>
+				<ng-form name="nestedForm"  class="row">
+				<div class="form-group">
+					<label>recipient weight</label>
+					<input type="text" class="form-control" required ng-model="dog.weight" />
+				</div>
+				<div class="form-group">
+					<label>recipient PCV</label>
+					<input type="text" class="form-control" required ng-model="dog.recipientPCV" />
+				</div>
+				<div class="form-group">
+					<label>donor PCV</label>
+					<input type="text" class="form-control" required ng-model="dog.donorPCV" />
+				</div>
+				<div class="form-group">
+					<label>desired PCV</label>
+					<input type="text" class="form-control" required ng-model="dog.desiredPCV" />
+				</div>
+				<h3>Volume = {{getDogTransfusionVolume(dog)}} ml</h3>
+				</ng-form>
+			</div>	
+			<div class="col-lg-6">
+				<h3>Transfusion Volume</h2>
+				<ng-form name="nestedForm"  class="row">
+				<div class="form-group">
+					<label>recipient weight</label>
+					<input type="text" class="form-control" required ng-model="model.name" />
+				</div>
+				<div class="form-group">
+					<label>recipient PCV</label>
+					<input type="text" class="form-control" required ng-model="model.name" />
+				</div>
+				<div class="form-group">
+					<label>donor PCV</label>
+					<input type="text" class="form-control" required ng-model="model.name" />
+				</div>
+				<div class="form-group">
+					<label>desired PCV</label>
+					<input type="text" class="form-control" required ng-model="model.name" />
+				</div>
+				<button type="submit" class="btn btn-default">Calculate</button>
+				</ng-form>
+			</div>			
+			</uib-tab>
+
+			<uib-tab index="1" heading="For Cat">
+				
+			</uib-tab>
+			</uib-tabset>
+		</form>
+		<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
- 		<script src="Hello World"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<script type="text/javascript" src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js"></script>
+		<script type="text/javascript" src="../node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+		<script src="../scripts/bloodTransfusionCalculator.js"></script>
 	</body>
 </html>
