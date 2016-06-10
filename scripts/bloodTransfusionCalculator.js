@@ -1,7 +1,7 @@
 angular
 .module('acToolsApp', ['ui.bootstrap'])
 .controller('calculatorCtrl', ['$scope', function($scope){
-	$scope.dog = { ratio : 90};
+	$scope.dog = { ratio : 85};
 	$scope.cat = { ratio : 60};
 	$scope.getTransfusionVolume = getTransfusionVolume;
 	$scope.getPCV = getPCV;
