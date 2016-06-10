@@ -11,3 +11,7 @@
 .bs-docs-footer {
     text-align: left;
 }
+
+.content {
+    min-height: 550px;
+}
