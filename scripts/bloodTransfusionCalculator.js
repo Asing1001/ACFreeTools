@@ -17,10 +17,3 @@ angular
 	}
 
 }]);
-
-
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('../service-worker.js', { scope: '/' })
-    .then(reg => console.log('SW registered!', reg))
-    .catch(err => console.log('Error!', err));
-}
